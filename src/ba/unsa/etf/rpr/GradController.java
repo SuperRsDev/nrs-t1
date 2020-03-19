@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GradController {
     public TextField fieldNaziv;
@@ -82,12 +84,12 @@ public class GradController {
     }
 
     public void clickOk(ActionEvent actionEvent) {
-        boolean sveOk = true;
+        AtomicBoolean sveOk = new AtomicBoolean(true);
 
         if (fieldNaziv.getText().trim().isEmpty()) {
             fieldNaziv.getStyleClass().removeAll("poljeIspravno");
             fieldNaziv.getStyleClass().add("poljeNijeIspravno");
-            sveOk = false;
+            sveOk.set(false);
         } else {
             fieldNaziv.getStyleClass().removeAll("poljeNijeIspravno");
             fieldNaziv.getStyleClass().add("poljeIspravno");
@@ -103,16 +105,30 @@ public class GradController {
         if (brojStanovnika <= 0) {
             fieldBrojStanovnika.getStyleClass().removeAll("poljeIspravno");
             fieldBrojStanovnika.getStyleClass().add("poljeNijeIspravno");
-            sveOk = false;
+            sveOk.set(false);
         } else {
             fieldBrojStanovnika.getStyleClass().removeAll("poljeNijeIspravno");
             fieldBrojStanovnika.getStyleClass().add("poljeIspravno");
         }
 
-        if (!sveOk) return;
+        Thread thread = new Thread(() -> {
+            sveOk.set(this.validirajPostanskiBroj());
 
-        this.validirajPostanskiBroj();
+            if (!sveOk.get()) {
+                fieldPostanskiBroj.getStyleClass().removeAll("poljeIspravno");
+                fieldPostanskiBroj.getStyleClass().add("poljeNijeIspravno");
+                return;
+            } else {
+                fieldPostanskiBroj.getStyleClass().removeAll("poljeNijeIspravno");
+                fieldPostanskiBroj.getStyleClass().add("poljeIspravno");
+            }
 
+            this.postaviGrad();
+        });
+        thread.start();
+    }
+
+    private void postaviGrad() {
         if (grad == null) grad = new Grad();
         grad.setNaziv(fieldNaziv.getText());
         grad.setBrojStanovnika(Integer.parseInt(fieldBrojStanovnika.getText()));
