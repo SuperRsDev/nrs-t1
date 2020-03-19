@@ -12,6 +12,7 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ListView?>
 <GridPane hgap="5.0" vgap="5.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
       <URL value="@/css/forme.css" />
@@ -36,8 +37,12 @@
       <TextField fx:id="fielPostanskiBroj" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label text="Država:" GridPane.rowIndex="3" />
       <ChoiceBox fx:id="choiceDrzava" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <ListView>
+
+      </ListView>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
          <buttons>
+            <Button fx:id="btnDodajZnamenitost" onAction="#clickDodajZnamenitost" mnemonicParsing="false" text="Ok" />
             <Button fx:id="btnOk" onAction="#clickOk" mnemonicParsing="false" text="Ok" />
             <Button fx:id="btnCancel" onAction="#clickCancel" mnemonicParsing="false" text="Cancel" />
          </buttons>

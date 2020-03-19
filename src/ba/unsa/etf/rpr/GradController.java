@@ -83,6 +83,10 @@ public class GradController {
         return false;
     }
 
+    public void clickDodajZnamenitost(ActionEvent actionEvent) {
+
+    }
+
     public void clickOk(ActionEvent actionEvent) {
         AtomicBoolean sveOk = new AtomicBoolean(true);
 
