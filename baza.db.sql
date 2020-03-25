@@ -1,19 +1,4 @@
 BEGIN TRANSACTION;
-CREATE TABLE IF NOT EXISTS `grad` (
-	`id`	INTEGER,
-	`naziv`	TEXT,
-	`broj_stanovnika`	INTEGER,
-	`drzava`	INTEGER,
-	`postanski_broj` TEXT,
-	FOREIGN KEY(`drzava`) REFERENCES `drzava`,
-	PRIMARY KEY(`id`)
-);
-INSERT INTO `grad` VALUES (1,'Pariz',2206488,1);
-INSERT INTO `grad` VALUES (2,'London',8825000,2);
-INSERT INTO `grad` VALUES (3,'Beč',1899055,3);
-INSERT INTO `grad` VALUES (4,'Manchester',545500,2);
-INSERT INTO `grad` VALUES (5,'Graz',280200,3);
-
 CREATE TABLE IF NOT EXISTS `drzava` (
 	`id`	INTEGER,
 	`naziv`	TEXT,
@@ -24,6 +9,21 @@ INSERT INTO `drzava` VALUES (1,'Francuska',1);
 INSERT INTO `drzava` VALUES (2,'Velika Britanija',2);
 INSERT INTO `drzava` VALUES (3,'Austrija',3);
 
+CREATE TABLE IF NOT EXISTS `grad` (
+	`id`	INTEGER,
+	`naziv`	TEXT,
+	`broj_stanovnika`	INTEGER,
+	`drzava`	INTEGER,
+	`postanski_broj` TEXT,
+	FOREIGN KEY(`drzava`) REFERENCES `drzava`,
+	PRIMARY KEY(`id`)
+);
+INSERT INTO `grad` VALUES (1,'Pariz',2206488,1, '71052');
+INSERT INTO `grad` VALUES (2,'London',8825000,2, '71052');
+INSERT INTO `grad` VALUES (3,'Beč',1899055,3, '71052');
+INSERT INTO `grad` VALUES (4,'Manchester',545500,2, '71052');
+INSERT INTO `grad` VALUES (5,'Graz',280200,3, '71052');
+
 CREATE TABLE IF NOT EXISTS `znamenitost` (
 	`id`	INTEGER,
 	`naziv`	TEXT,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `znamenitost` (
 	FOREIGN KEY(`grad_id`) REFERENCES `grad`,
 	PRIMARY KEY(`id`)
 );
-INSERT INTO `znamenitost` VALUES (1,'Francuska',1);
-INSERT INTO `znamenitost` VALUES (2,'Velika Britanija',2);
-INSERT INTO `znamenitost` VALUES (3,'Austrija',3);
+INSERT INTO `znamenitost` VALUES (1,'Big Ban','', 1);
+INSERT INTO `znamenitost` VALUES (2,'Eifelov Toranj','',1 );
+INSERT INTO `znamenitost` VALUES (3,'Sebilj','', 2);
 COMMIT;

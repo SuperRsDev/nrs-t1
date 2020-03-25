@@ -15,6 +15,7 @@
           <TableColumn fx:id="colGradNaziv" prefWidth="100.0" text="Naziv" />
           <TableColumn fx:id="colGradStanovnika" prefWidth="90.0" text="Stanovnika" />
           <TableColumn fx:id="colGradDrzava" prefWidth="185.0" text="Država" />
+            <TableColumn fx:id="colPostanskiBroj" prefWidth="125.0" text="Postanski broj" />
         </columns>
       </TableView>
    </center>

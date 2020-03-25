@@ -74,6 +74,7 @@ class GeografijaDAOTest {
         Grad grad = new Grad();
         grad.setNaziv("Marseille");
         grad.setBrojStanovnika(869815);
+        grad.setPostanskiBroj("7512");
         grad.setDrzava(francuska);
         dao.dodajGrad(grad);
 
@@ -93,6 +94,7 @@ class GeografijaDAOTest {
         Grad sarajevo = new Grad();
         sarajevo.setNaziv("Sarajevo");
         sarajevo.setBrojStanovnika(500000);
+        sarajevo.setPostanskiBroj("71000");
         // Privremeno stavljamo Francusku jer BiH još uvijek nije dodana
         sarajevo.setDrzava(dao.nadjiDrzavu("Francuska"));
         dao.dodajGrad(sarajevo);

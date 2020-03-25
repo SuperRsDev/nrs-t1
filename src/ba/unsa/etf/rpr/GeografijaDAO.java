@@ -80,6 +80,11 @@ public class GeografijaDAO {
             String sqlUpit = "";
             while (ulaz.hasNext()) {
                 sqlUpit += ulaz.nextLine();
+                // Preskoci praznu liniju
+                if (sqlUpit.length() == 0) {
+                    continue;
+                }
+
                 if ( sqlUpit.charAt( sqlUpit.length()-1 ) == ';') {
                     try {
                         Statement stmt = conn.createStatement();
@@ -110,7 +115,7 @@ public class GeografijaDAO {
     }
 
     private Grad dajGradIzResultSeta(ResultSet rs, Drzava d) throws SQLException {
-        return new Grad(rs.getInt(1), rs.getString(2), rs.getInt(3), d);
+        return new Grad(rs.getInt(1), rs.getString(2), rs.getInt(3), d, rs.getString(5));
     }
 
     private Drzava dajDrzavu(int id) {

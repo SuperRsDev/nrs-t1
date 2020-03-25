@@ -7,11 +7,12 @@ public class Grad {
     private String postanskiBroj;
     private Drzava drzava;
 
-    public Grad(int id, String naziv, int brojStanovnika, Drzava drzava) {
+    public Grad(int id, String naziv, int brojStanovnika, Drzava drzava, String postanskiBroj) {
         this.id = id;
         this.naziv = naziv;
         this.brojStanovnika = brojStanovnika;
         this.drzava = drzava;
+        this.postanskiBroj = postanskiBroj;
     }
 
     public Grad() {

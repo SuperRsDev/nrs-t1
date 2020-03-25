@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<GridPane hgap="5.0" vgap="5.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@/css/forme.css" />
+    </stylesheets>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Label text="Naziv:" GridPane.rowIndex="0"  GridPane.columnIndex="0" />
+        <TextField fx:id="fieldNaziv" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+        <ButtonBar prefHeight="40.0" prefWidth="200.0"  GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <buttons>
+                <Button fx:id="btnDodajZnamenitost" onAction="#clickDodajZnamenitost" mnemonicParsing="false" text="Trazi" />
+            </buttons>
+        </ButtonBar>
+        <ListView GridPane.rowIndex="1">
+
+        </ListView>
+
+    </children>
+</GridPane>
